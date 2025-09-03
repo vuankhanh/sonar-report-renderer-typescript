@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "dist/server.js",
   "scripts": {
-    "build": "tsc && npm run copy-templates",
+    "build": "npm run clean && tsc && npm run copy-templates",
+    "clean": "rimraf dist",
     "copy-templates": "copyfiles -u 1 \"src/template/**/*\" dist/src",
     "start": "node dist/server.js",
     "start:dev": "ts-node-dev --respawn --transpile-only server.ts",
@@ -21,7 +22,8 @@
     "express": "^5.1.0",
     "moment": "^2.30.1",
     "progressbar.js": "^1.1.1",
-    "puppeteer": "^24.17.1"
+    "puppeteer": "^24.17.1",
+    "rimraf": "^6.0.1"
   },
   "devDependencies": {
     "@types/ejs": "^3.1.5",
