@@ -1,0 +1,40 @@
+<!-- filepath: d:\Workspace\Programming\MEAN\Nodejs\sonar-report-renderer-typescript\src\template\report.ejs -->
+<div id="report-root" style="display: flex; flex-direction: column; font-family: Arial, sans-serif; width: fit-content;">
+  <!-- Ngày giờ hiện tại -->
+  <div style="font-size: 14px; color: #888; line-height: 0.75;">
+    <%= currentDate %>
+  </div>
+  <hr style="border: none; border-bottom: 1px dashed #888; margin: 10px 0;">
+  <div style="display: flex; gap: 32px;">
+    <!-- Security -->
+    <% if (security_rating) { %>
+      <%- include('grade-box', { metric: security_rating, label: 'Security' }) %>
+        <% } %>
+
+          <!-- ReliabilityRating -->
+          <% if (reliability_rating) { %>
+            <%- include('grade-box', { metric: reliability_rating, label: 'Reliability' }) %>
+              <% } %>
+
+                <!-- SqaleRating -->
+                <% if (sqale_rating) { %>
+                  <%- include('grade-box', { metric: sqale_rating, label: 'Maintainability' }) %>
+                    <% } %>
+
+                      <!-- SecurityHotspotsReviewed -->
+                      <% if (security_hotspots_reviewed) { %>
+                        <%- include('grade-box', { metric: security_hotspots_reviewed, label: 'Hotspots Reviewed' }) %>
+                          <% } %>
+
+                            <!-- Coverage -->
+                            <% if (coverage) { %>
+                              <%- include('spinner-box', { metric: coverage, label: 'Coverage' }) %>
+                                <% } %>
+
+                                  <!-- Duplications -->
+                                  <% if (duplicated_lines_density) { %>
+                                    <%- include('spinner-box-with-dot', { metric: duplicated_lines_density,
+                                      label: 'Duplications' }) %>
+                                      <% } %>
+  </div>
+</div>

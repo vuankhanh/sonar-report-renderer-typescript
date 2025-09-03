@@ -1,0 +1,17 @@
+<div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+  <div style="display: flex; gap: 10px; align-items: center;">
+    <div id="coverage-progress" style="width: 32px; height: 32px; margin: 0 auto; display: inline-block;"></div>
+    <span style="font-size: 18px;"><%= coverage.value %></span>
+  </div>
+  <div style="font-size: 16px; color: #888; font-weight: 600;"><%= label %></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.0/dist/progressbar.min.js"></script>
+<script>
+  const bar = new ProgressBar.Circle('#coverage-progress', {
+    color: '<%= coverage.color %>',
+    trailColor: '<%= coverage.trailColor %>',
+    strokeWidth: 10,
+    trailWidth: 10,
+  });
+  bar.set(<%= coverage.progress %>);
+</script>

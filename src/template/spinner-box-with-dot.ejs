@@ -1,0 +1,21 @@
+<div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+  <div style="display: flex; gap: 10px; align-items: center;">
+    <div id="metric-progress-with-dot" style="width: 32px; height: 32px; margin: 0 auto; display: inline-block; position: relative;">
+      <svg width="32" height="32" style="position: absolute; top: 0; left: 0; pointer-events: none;">
+        <circle cx="16" cy="16" r="3" fill="<%= metric.color %>" />
+      </svg>
+    </div>
+    <span style="font-size: 18px;"><%= metric.value %></span>
+  </div>
+  <div style="font-size: 16px; color: #888; font-weight: 600;"><%= label %></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.0/dist/progressbar.min.js"></script>
+<script>
+  const barWithDot = new ProgressBar.Circle('#metric-progress-with-dot', {
+    color: '<%= metric.color %>',
+    trailColor: '<%= metric.trailColor %>',
+    strokeWidth: 10,
+    trailWidth: 10,
+  });
+  barWithDot.set(<%= metric.progress %>);
+</script>
