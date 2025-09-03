@@ -15,7 +15,7 @@ Sonar Report Renderer is a Node.js application built with TypeScript, Express, a
 ## Installation
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/vuankhanh/sonar-report-renderer-typescript.git
 cd sonar-report-renderer-typescript
 npm install
 ```
