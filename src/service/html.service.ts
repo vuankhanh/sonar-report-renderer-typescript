@@ -2,7 +2,9 @@ import puppeteer from 'puppeteer';
 
 export class HtmlService {
   static async htmlToImageBuffer(html: string, selector: string = 'body'): Promise<Buffer> {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
     const page = await browser.newPage();
     await page.setContent(html, { waitUntil: 'networkidle0' });
 
